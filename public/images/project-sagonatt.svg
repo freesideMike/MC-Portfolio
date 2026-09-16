@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1123" />
+      <stop offset="50%" stop-color="#1e1645" />
+      <stop offset="100%" stop-color="#0a0b16" />
+    </linearGradient>
+    <linearGradient id="moonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <linearGradient id="aiGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="360" rx="16" fill="url(#bg)" />
+
+  <!-- Stars Background -->
+  <circle cx="80" cy="70" r="1.5" fill="#ffffff" opacity="0.8" />
+  <circle cx="150" cy="40" r="2" fill="#c084fc" opacity="0.9" />
+  <circle cx="230" cy="90" r="1" fill="#ffffff" opacity="0.6" />
+  <circle cx="480" cy="60" r="2.5" fill="#fde047" opacity="0.8" />
+  <circle cx="530" cy="110" r="1.5" fill="#ffffff" opacity="0.7" />
+  <circle cx="420" cy="120" r="1" fill="#c084fc" opacity="0.5" />
+  <circle cx="100" cy="180" r="2" fill="#38bdf8" opacity="0.7" />
+  <circle cx="520" cy="220" r="1.5" fill="#f43f5e" opacity="0.6" />
+
+  <!-- Glowing Moon -->
+  <g filter="url(#softGlow)" transform="translate(420, 50)">
+    <circle cx="60" cy="60" r="45" fill="url(#moonGlow)" opacity="0.9" />
+    <circle cx="45" cy="48" r="38" fill="#17153b" />
+  </g>
+
+  <!-- Open Book Base -->
+  <g transform="translate(160, 150)">
+    <!-- Book Shadow & Glow -->
+    <ellipse cx="140" cy="140" rx="160" ry="25" fill="#000000" opacity="0.5" />
+    <path d="M20 120 C 70 95, 120 100, 140 120 C 160 100, 210 95, 260 120 L 260 50 C 210 25, 160 30, 140 50 C 120 30, 70 25, 20 50 Z" fill="#1e2238" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+    <path d="M25 115 C 70 90, 120 95, 140 115 C 160 95, 210 90, 255 115 L 255 45 C 210 20, 160 25, 140 45 C 120 25, 70 20, 25 45 Z" fill="#2d3356" />
+    <line x1="140" y1="45" x2="140" y2="115" stroke="#4f46e5" stroke-width="3" />
+
+    <!-- Magical AI Waves rising from pages -->
+    <path d="M70 40 C 90 -20, 120 10, 140 -40 C 160 -10, 190 -25, 210 40" fill="none" stroke="url(#aiGlow)" stroke-width="3.5" stroke-linecap="round" filter="url(#softGlow)" opacity="0.85" />
+    
+    <!-- Magical Story Sparkles & Floating Prompts -->
+    <g transform="translate(90, -35)">
+      <polygon points="12,0 15,9 24,12 15,15 12,24 9,15 0,12 9,9" fill="#facc15" filter="url(#softGlow)" />
+    </g>
+    <g transform="translate(180, -20) scale(0.7)">
+      <polygon points="12,0 15,9 24,12 15,15 12,24 9,15 0,12 9,9" fill="#38bdf8" />
+    </g>
+    <g transform="translate(130, -70) scale(0.85)">
+      <polygon points="12,0 15,9 24,12 15,15 12,24 9,15 0,12 9,9" fill="#e879f9" filter="url(#softGlow)" />
+    </g>
+  </g>
+
+  <!-- Overlay UI Card: "Sagonatt AI Engine" -->
+  <g transform="translate(30, 240)">
+    <rect width="210" height="75" rx="12" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(139, 92, 246, 0.4)" stroke-width="1.5" filter="url(#softGlow)" />
+    <circle cx="25" cy="28" r="8" fill="#10b981" />
+    <text x="42" y="32" font-family="'Outfit', sans-serif" font-weight="700" font-size="14" fill="#ffffff">Sagonatt AI Engine</text>
+    <text x="25" y="55" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">Val: 🚀 Rymdäventyr → 🌙 Godnatt</text>
+  </g>
+
+  <!-- Pill badge top left -->
+  <g transform="translate(30, 30)">
+    <rect width="130" height="28" rx="14" fill="rgba(139, 92, 246, 0.2)" stroke="rgba(139, 92, 246, 0.5)" />
+    <text x="18" y="19" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#c084fc">✨ AI BEDTIME APP</text>
+  </g>
+</svg>

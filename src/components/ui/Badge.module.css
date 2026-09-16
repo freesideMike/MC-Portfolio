@@ -1,0 +1,64 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+}
+
+/* Standard subtle pill */
+.default {
+  background-color: #ffffff;
+  border: 1px solid var(--surface-card-border);
+  color: var(--text-secondary);
+  padding: 0.35rem 0.9rem;
+}
+
+/* Accent terracotta pill */
+.accent {
+  background-color: var(--accent-primary-light);
+  border: 1px solid var(--accent-primary-border);
+  color: var(--accent-primary);
+  padding: 0.3rem 0.85rem;
+}
+
+/* Tech tag pill */
+.tech {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  border: 1px solid var(--tag-border);
+  padding: 0.35rem 0.85rem;
+  font-weight: 500;
+}
+
+/* Dark theme tech tag pill */
+.techDark {
+  background-color: var(--tag-dark-bg);
+  color: var(--tag-dark-text);
+  border: 1px solid var(--tag-dark-border);
+  padding: 0.35rem 0.85rem;
+  font-weight: 500;
+}
+
+@media print {
+  .badge {
+    font-size: 7.5pt !important;
+    padding: 0.12rem 0.45rem !important;
+    border-radius: 3px !important;
+    line-height: 1.1 !important;
+    border: 1px solid #cbd5e1 !important;
+    background-color: #f1f5f9 !important;
+    color: #334155 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .accent {
+    background-color: #fff1ee !important;
+    border-color: #fbd5cb !important;
+    color: #c2410c !important;
+  }
+}

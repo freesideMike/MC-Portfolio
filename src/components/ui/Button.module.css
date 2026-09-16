@@ -1,0 +1,74 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+/* Primary Coral Button */
+.primary {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(223, 91, 55, 0.2);
+}
+
+.primary:hover {
+  background-color: var(--accent-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(223, 91, 55, 0.3);
+}
+
+/* Secondary White Card Button */
+.secondary {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border-color: var(--surface-card-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.secondary:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+/* Ghost / Icon only button */
+.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+  padding: 0.4rem;
+}
+
+.ghost:hover {
+  color: var(--text-primary);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Sizes */
+.sm {
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+}
+
+.md {
+  padding: 0.7rem 1.4rem;
+}
+
+.lg {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+}
+
+.fullWidth {
+  width: 100%;
+}

@@ -1,0 +1,49 @@
+.section {
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+}
+
+.bannerCard {
+  position: relative;
+  border-radius: var(--radius-xl);
+  background-color: #ffffff;
+  border: 1px solid var(--surface-card-border);
+  padding: 4.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 160px;
+  background: radial-gradient(ellipse at bottom, rgba(223, 91, 55, 0.12) 0%, rgba(223, 91, 55, 0.04) 50%, transparent 80%);
+  pointer-events: none;
+  filter: blur(30px);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(1.85rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+  line-height: 1.25;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2.25rem;
+}

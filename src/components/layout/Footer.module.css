@@ -1,0 +1,43 @@
+.footer {
+  border-top: 1px solid var(--surface-card-border);
+  background-color: var(--bg-primary);
+  padding: 2.5rem 0;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.brand {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-weight: 500;
+}
+
+.link {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.link:hover {
+  color: var(--accent-primary);
+}

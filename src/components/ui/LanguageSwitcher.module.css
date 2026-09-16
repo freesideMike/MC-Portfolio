@@ -1,0 +1,82 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  user-select: none;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.03em;
+}
+
+.labelActive {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+/* Switch Button Track */
+.switchTrack {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.switchTrack:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+/* Swedish (SV) Active State: Yellow surface, Blue border */
+.trackSv {
+  background-color: #facc15;
+  border: 2px solid #005293;
+}
+
+.trackSv:hover {
+  background-color: #fde047;
+  border-color: #0284c7;
+}
+
+/* English (EN) Active State: Blue surface, Red border */
+.trackEn {
+  background-color: #1e3a8a;
+  border: 2px solid #dc2626;
+}
+
+.trackEn:hover {
+  background-color: #1e40af;
+  border-color: #ef4444;
+}
+
+/* White Circle Knob / Thumb */
+.thumb {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.thumbSv {
+  transform: translateX(1px);
+}
+
+.thumbEn {
+  transform: translateX(23px);
+}

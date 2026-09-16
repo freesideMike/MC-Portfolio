@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="schedBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061a14" />
+      <stop offset="50%" stop-color="#0f2e24" />
+      <stop offset="100%" stop-color="#061a14" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="360" rx="16" fill="url(#schedBg)" />
+
+  <!-- Timeline & Shift Blocks Mockup -->
+  <g transform="translate(50, 75)">
+    <rect width="500" height="245" rx="12" fill="#0c1f19" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1.5" />
+    
+    <!-- Timeline Header -->
+    <rect width="500" height="35" rx="12" fill="#132e25" />
+    <text x="25" y="22" font-family="'Outfit', sans-serif" font-weight="600" font-size="12" fill="#34d399">Schemaöversikt & Täckningsgrad (08:00 – 20:00)</text>
+
+    <!-- Staff Rows -->
+    <!-- Row 1 -->
+    <g transform="translate(20, 50)">
+      <circle cx="15" cy="15" r="12" fill="#10b981" />
+      <text x="11" y="19" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff">M</text>
+      <text x="35" y="18" font-family="'Inter', sans-serif" font-size="11" fill="#e2e8f0">Mikael (Planerare)</text>
+      <!-- Shift block -->
+      <rect x="160" y="3" width="220" height="24" rx="6" fill="#10b981" opacity="0.85" />
+      <text x="175" y="19" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#ffffff">08:00 – 16:30 • Full bemanning</text>
+    </g>
+
+    <!-- Row 2 -->
+    <g transform="translate(20, 95)">
+      <circle cx="15" cy="15" r="12" fill="#6366f1" />
+      <text x="11" y="19" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff">A</text>
+      <text x="35" y="18" font-family="'Inter', sans-serif" font-size="11" fill="#e2e8f0">Anna (Kundservice)</text>
+      <!-- Shift block -->
+      <rect x="200" y="3" width="200" height="24" rx="6" fill="#6366f1" opacity="0.85" />
+      <text x="215" y="19" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#ffffff">10:00 – 18:00 • Peak flow</text>
+    </g>
+
+    <!-- Row 3 -->
+    <g transform="translate(20, 140)">
+      <circle cx="15" cy="15" r="12" fill="#f59e0b" />
+      <text x="11" y="19" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff">J</text>
+      <text x="35" y="18" font-family="'Inter', sans-serif" font-size="11" fill="#e2e8f0">Johan (Logistik)</text>
+      <!-- Shift block -->
+      <rect x="130" y="3" width="260" height="24" rx="6" fill="#f59e0b" opacity="0.85" />
+      <text x="145" y="19" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#ffffff">07:00 – 15:30 • Leveransvåg</text>
+    </g>
+
+    <!-- Stats Bar at bottom -->
+    <g transform="translate(20, 190)">
+      <rect width="460" height="40" rx="8" fill="#132e25" />
+      <text x="20" y="24" font-family="'Inter', sans-serif" font-size="11" fill="#a7f3d0">Täckningsstatus: 100% optimal</text>
+      <text x="260" y="24" font-family="'Inter', sans-serif" font-size="11" fill="#a7f3d0">Dygnsvila: Validerad OK (11h)</text>
+    </g>
+  </g>
+
+  <!-- Top Left Pill Badge -->
+  <g transform="translate(30, 25)">
+    <rect width="180" height="28" rx="14" fill="rgba(16, 185, 129, 0.2)" stroke="rgba(16, 185, 129, 0.5)" />
+    <text x="18" y="19" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#34d399">📊 WORKFORCE SCHEDULER</text>
+  </g>
+</svg>

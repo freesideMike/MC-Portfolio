@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="motionBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#051923" />
+      <stop offset="50%" stop-color="#003554" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+    <linearGradient id="cyanNeon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="cyanGlow">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="360" rx="16" fill="url(#motionBg)" />
+
+  <!-- Grid Perspective Lines (Road/Arena) -->
+  <g stroke="rgba(6, 182, 212, 0.15)" stroke-width="1.5">
+    <line x1="0" y1="360" x2="280" y2="180" />
+    <line x1="150" y1="360" x2="290" y2="180" />
+    <line x1="300" y1="360" x2="300" y2="180" />
+    <line x1="450" y1="360" x2="310" y2="180" />
+    <line x1="600" y1="360" x2="320" y2="180" />
+    <ellipse cx="300" cy="270" rx="260" ry="80" fill="none" stroke="rgba(6, 182, 212, 0.2)" />
+  </g>
+
+  <!-- 360 Degree Body Rotation Dial / Compass -->
+  <g transform="translate(300, 180)">
+    <!-- Outer rotation track -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="4" stroke-dasharray="6,6" />
+    <circle cx="0" cy="0" r="100" fill="none" stroke="url(#cyanNeon)" stroke-width="4" stroke-dasharray="160 300" filter="url(#cyanGlow)" />
+
+    <!-- Turning Body Silhouette & Arrows -->
+    <!-- Turning Direction Indicator Arc -->
+    <path d="M -70 -70 A 100 100 0 0 1 70 -70" fill="none" stroke="#38bdf8" stroke-width="4" marker-end="url(#arrow)" filter="url(#cyanGlow)" />
+    
+    <!-- Stylized Person Figure holding phone -->
+    <g transform="rotate(35)">
+      <!-- Head -->
+      <circle cx="0" cy="-25" r="14" fill="#38bdf8" />
+      <!-- Torso / Shoulders turned -->
+      <ellipse cx="0" cy="5" rx="22" ry="12" fill="#0284c7" />
+      <!-- Arms holding phone in front -->
+      <path d="M -18 5 L -8 24 L 8 24 L 18 5" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" />
+      <!-- Mobile Phone in hand -->
+      <rect x="-10" y="20" width="20" height="12" rx="3" fill="#ffffff" filter="url(#cyanGlow)" />
+      <!-- Gyro yaw beam -->
+      <line x1="0" y1="20" x2="0" y2="-65" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="4,3" />
+      <polygon points="0,-72 -5,-62 5,-62" fill="#f43f5e" />
+    </g>
+  </g>
+
+  <!-- Floating UI Widget: Gyro Heading HUD -->
+  <g transform="translate(40, 240)">
+    <rect width="210" height="75" rx="12" fill="rgba(5, 25, 35, 0.85)" stroke="rgba(6, 182, 212, 0.4)" stroke-width="1.5" />
+    <text x="20" y="32" font-family="'Outfit', sans-serif" font-weight="700" font-size="14" fill="#ffffff">Body Yaw: +42° (Turn Right)</text>
+    <text x="20" y="55" font-family="'Inter', sans-serif" font-size="11" fill="#38bdf8">Sensor: DeviceOrientation API</text>
+  </g>
+
+  <!-- Pill badge top left -->
+  <g transform="translate(30, 30)">
+    <rect width="160" height="28" rx="14" fill="rgba(6, 182, 212, 0.2)" stroke="rgba(6, 182, 212, 0.5)" />
+    <text x="18" y="19" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#38bdf8">🕹️ MOTION GAME EXPERIMENT</text>
+  </g>
+</svg>
