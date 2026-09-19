@@ -63,6 +63,11 @@ h1 {
   border-radius: 0.5rem;
 }
 
+.button:focus-visible {
+  outline: 3px solid #bfdbfe;
+  outline-offset: 3px;
+}
+
 .section {
   padding: 3.5rem 0;
 }
