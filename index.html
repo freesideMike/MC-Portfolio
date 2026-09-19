@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mike Carroll | Frontend & Web Developer</title>
+  <meta name="description" content="Portfolio website for Mike Carroll, Frontend and Web Developer.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Hello, I am</p>
+      <h1>Mike Carroll</h1>
+      <p class="subtitle">Frontend / Web Developer</p>
+      <p class="intro">I build responsive, user-focused web experiences with modern frontend technologies.</p>
+      <a class="button" href="#contact">Contact Me</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          I am a frontend-focused web developer with a passion for clean UI, accessible design, and performant websites.
+          I enjoy turning ideas into intuitive digital products.
+        </p>
+      </div>
+    </section>
+
+    <section class="section alt" id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <ul class="skills">
+          <li>HTML5</li>
+          <li>CSS3 / Sass</li>
+          <li>JavaScript / TypeScript</li>
+          <li>React</li>
+          <li>Responsive Design</li>
+          <li>Web Accessibility</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="project-list">
+          <article class="project-card">
+            <h3>Project One</h3>
+            <p>Brief description of a project that highlights your frontend and problem-solving skills.</p>
+          </article>
+          <article class="project-card">
+            <h3>Project Two</h3>
+            <p>Another project showcasing performance, UI polish, and clean implementation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Open to frontend and web development opportunities.</p>
+        <p>Email: your.email@example.com</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Mike Carroll</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
