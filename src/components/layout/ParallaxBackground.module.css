@@ -1,0 +1,34 @@
+.parallaxViewport {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.parallaxTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 200vh;
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: max(100vw, 1100px) auto;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.light {
+  background-image: url('/images/background/grid-light.svg');
+  opacity: 0.1;
+}
+
+.dark {
+  background-image: url('/images/background/grid-dark.svg');
+  opacity: 1;
+}

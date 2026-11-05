@@ -1,7 +1,6 @@
 import React from 'react';
-import { Mail } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
-import { Button } from '../ui/Button';
+import { ContactButton } from '../ui/ContactButton';
 import styles from './CallToActionBanner.module.css';
 
 interface CallToActionBannerProps {
@@ -23,14 +22,10 @@ export const CallToActionBanner: React.FC<CallToActionBannerProps> = ({ onOpenCo
 
             <p className={styles.subtitle}>{t.ctaSubtitle}</p>
 
-            <Button
-              variant="primary"
+            <ContactButton
               size="lg"
-              icon={<Mail size={17} />}
               onClick={onOpenContact}
-            >
-              {t.sendAMessage}
-            </Button>
+            />
           </div>
         </div>
       </div>

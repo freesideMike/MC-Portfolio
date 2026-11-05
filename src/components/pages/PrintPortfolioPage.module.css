@@ -1,0 +1,110 @@
+.printRoot {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: #ffffff;
+  color: #111827;
+  font-family: inherit;
+}
+
+.printHeaderCover {
+  padding: 3rem 0 2.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 2.5rem;
+}
+
+.coverPill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #df5b37;
+  background: rgba(223, 91, 55, 0.08);
+  border: 1px solid rgba(223, 91, 55, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+.coverName {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.coverRole {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #df5b37;
+  margin-bottom: 0.75rem;
+}
+
+.coverMeta {
+  font-size: 0.95rem;
+  color: #4b5563;
+  max-width: 650px;
+  line-height: 1.6;
+}
+
+.printSection {
+  margin-bottom: 3.5rem;
+  page-break-inside: avoid;
+}
+
+.printProjectDivider {
+  padding: 2.5rem 0 1.5rem;
+  border-top: 2px solid #e5e7eb;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  page-break-before: always;
+}
+
+.projectsIntroTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.projectsIntroSub {
+  font-size: 1.05rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.printProjectPage {
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 2px dashed #e5e7eb;
+  page-break-before: always;
+}
+
+/* Print CSS optimizations */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  .printRoot {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .printProjectPage {
+    page-break-before: always;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 2cm;
+  }
+
+  button, a[href^="http"]:after {
+    text-decoration: none;
+  }
+}

@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
-import { Button } from '../ui/Button';
+import { ContactButton } from '../ui/ContactButton';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 import styles from './Navbar.module.css';
 
 interface NavbarProps {
   onOpenResume: () => void;
   onOpenContact: () => void;
+  activeNavHref?: string;
+  subHeader?: React.ReactNode;
+  onNavigateSection?: (href: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onOpenResume,
+  onOpenContact,
+  activeNavHref,
+  subHeader,
+  onNavigateSection,
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { navLinks, personalInfo, t } = useLanguage();
@@ -27,17 +36,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) =
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         {/* Brand / Logo */}
-        <a href="#" className={styles.logo}>
+        <a
+          href="#"
+          className={styles.logo}
+          onClick={(e) => {
+            if (onNavigateSection) {
+              e.preventDefault();
+              onNavigateSection('#');
+            }
+          }}
+        >
           {personalInfo.name}
         </a>
 
         {/* Desktop Nav */}
         <nav className={styles.desktopNav}>
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className={styles.navLink}>
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeNavHref === link.href;
+
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`${styles.navLink} ${isActive ? styles.activeNavLink : ''}`}
+                onClick={(e) => {
+                  if (onNavigateSection) {
+                    e.preventDefault();
+                    onNavigateSection(link.href);
+                  }
+                }}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <button
             type="button"
             onClick={onOpenResume}
@@ -49,14 +81,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) =
 
         {/* Desktop Actions */}
         <div className={styles.desktopActions}>
-          <Button
-            variant="primary"
+          <ContactButton
             size="sm"
-            icon={<Mail size={15} />}
             onClick={onOpenContact}
-          >
-            {t.getInTouch}
-          </Button>
+          />
           <LanguageSwitcher />
         </div>
 
@@ -73,19 +101,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) =
         </div>
       </div>
 
+      {/* Sub Header for Sub-Navigation (e.g. Projects) */}
+      {subHeader && (
+        <div className={styles.subHeaderWrapper}>
+          <div className="container">
+            {subHeader}
+          </div>
+        </div>
+      )}
+
       {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
         <div className={styles.mobileMenu}>
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className={styles.mobileNavLink}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeNavHref === link.href;
+
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  if (onNavigateSection) {
+                    e.preventDefault();
+                    onNavigateSection(link.href);
+                  }
+                }}
+                className={`${styles.mobileNavLink} ${
+                  isActive ? styles.activeMobileNavLink : ''
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <button
             type="button"
             onClick={() => {
@@ -97,18 +146,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume, onOpenContact }) =
             {t.resume}
           </button>
           <div className={styles.mobileActions}>
-            <Button
-              variant="primary"
+            <ContactButton
               size="sm"
               fullWidth
-              icon={<Mail size={15} />}
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenContact();
               }}
-            >
-              {t.getInTouch}
-            </Button>
+            />
           </div>
         </div>
       )}

@@ -1,7 +1,8 @@
 import React from 'react';
-import { ArrowUpRight, MapPin, Phone, GraduationCap, Mail } from 'lucide-react';
+import { ArrowUpRight, MapPin, Phone, GraduationCap } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { Button } from '../ui/Button';
+import { ContactButton } from '../ui/ContactButton';
 import { Badge } from '../ui/Badge';
 import styles from './HeroSection.module.css';
 
@@ -47,14 +48,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact }) => {
                 {t.viewWork}
               </Button>
 
-              <Button
-                variant="primary"
+              <ContactButton
                 size="md"
-                icon={<Mail size={17} />}
                 onClick={onOpenContact}
-              >
-                {t.getInTouch}
-              </Button>
+              />
             </div>
 
             {/* Quick Contact & Info Bar */}

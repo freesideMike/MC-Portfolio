@@ -51,6 +51,10 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ onOpenProjec
                   alt={project.title}
                   className={styles.image}
                 />
+                <div className={styles.caseStudyBadge}>
+                  <span className={styles.caseStudyDot} />
+                  <span>Case Study</span>
+                </div>
               </div>
 
               {/* Card Body */}

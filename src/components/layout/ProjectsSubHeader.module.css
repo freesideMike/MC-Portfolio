@@ -1,0 +1,60 @@
+.subHeaderInner {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.5rem 0;
+  white-space: nowrap;
+}
+
+.subHeaderInner::-webkit-scrollbar {
+  display: none;
+}
+
+.projectsNav {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.projectItem {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.projectItem:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.projectItemActive {
+  color: var(--accent-primary);
+  font-weight: 700;
+  background: rgba(223, 91, 55, 0.08);
+  border-color: rgba(223, 91, 55, 0.3);
+  box-shadow: 0 1px 4px rgba(223, 91, 55, 0.1);
+}
+
+@media (max-width: 640px) {
+  .subHeaderInner {
+    padding: 0.4rem 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .projectItem {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.82rem;
+  }
+}

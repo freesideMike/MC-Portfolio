@@ -6,7 +6,9 @@
 .bannerCard {
   position: relative;
   border-radius: var(--radius-xl);
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--surface-card-border);
   padding: 4.5rem 2rem;
   text-align: center;
