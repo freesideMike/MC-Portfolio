@@ -1,83 +1,84 @@
 import React from 'react';
 import { Code, Palette, Server, Sparkles, Layers } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
-import { Card } from '../ui/Card';
-import { Badge } from '../ui/Badge';
 import styles from './TechnicalArsenal.module.css';
 
 export const TechnicalArsenal: React.FC = () => {
   const { skillCategories, t } = useLanguage();
 
-  const renderIcon = (iconName: string) => {
+  const renderIcon = (iconName: string, size = 22, strokeWidth = 2.2) => {
     switch (iconName) {
       case 'code':
-        return <Code size={24} strokeWidth={2.5} />;
+        return <Code size={size} strokeWidth={strokeWidth} />;
       case 'palette':
-        return <Palette size={24} strokeWidth={2.5} />;
+        return <Palette size={size} strokeWidth={strokeWidth} />;
       case 'server':
-        return <Server size={24} strokeWidth={2.5} />;
+        return <Server size={size} strokeWidth={strokeWidth} />;
       case 'sparkles':
-        return <Sparkles size={24} strokeWidth={2.5} />;
+        return <Sparkles size={size} strokeWidth={strokeWidth} />;
       case 'layers':
       default:
-        return <Layers size={24} strokeWidth={2.5} />;
+        return <Layers size={size} strokeWidth={strokeWidth} />;
     }
   };
 
   return (
     <section id="arsenal" className={`section ${styles.section}`}>
-      <div className="container">
+      <div className={styles.arsenalContainer}>
         {/* Section Header */}
         <div className={styles.header}>
           <h2 className={styles.title}>{t.technicalArsenalTitle}</h2>
           <p className={styles.subtitle}>{t.technicalArsenalSubtitle}</p>
         </div>
 
-        {/* 2 Bento Cards */}
-        <div className="grid-2">
-          {skillCategories.map((category) => {
-            const isDark = category.variant === 'dark';
+        {/* 4 Flex Columns with Staircase Hover Lists */}
+        <div className={styles.cardsRow}>
+          {skillCategories.map((category, cardIdx) => {
+            const isTinted = cardIdx % 2 === 1;
+            const totalRows = category.skills.length;
 
             return (
-              <Card key={category.title} variant={isDark ? 'dark' : 'clean'}>
-                <div className={styles.cardInner}>
-                  <div>
-                    <div className={styles.cardHeader}>
-                      <div
-                        style={{
-                          color: isDark ? '#38bdf8' : '#df5b37',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        {renderIcon(category.icon)}
-                      </div>
-                      <h3
-                        className={styles.cardTitle}
-                        style={{ color: isDark ? '#ffffff' : '#111827' }}
-                      >
-                        {category.title}
-                      </h3>
-                    </div>
-
-                    <p className={isDark ? styles.cardDescDark : styles.cardDesc}>
-                      {category.description}
-                    </p>
-                  </div>
-
-                  <div className={styles.tagGroup}>
-                    {category.skills.map((skill) => (
-                      <Badge
-                        key={skill}
-                        variant={isDark ? 'techDark' : 'tech'}
-                      >
-                        {skill}
-                      </Badge>
-                    ))}
-                  </div>
+              <article
+                key={category.title}
+                className={`${styles.card} ${isTinted ? styles.cardTinted : styles.cardClean}`}
+              >
+                {/* Top Card Header (No small icon, concise description) */}
+                <div className={styles.cardTop}>
+                  <h3 className={styles.cardTitle}>{category.title}</h3>
+                  <p className={styles.cardDesc}>{category.description}</p>
                 </div>
-              </Card>
+
+                {/* Staircase Hover List with Sliced Background Icon */}
+                <div
+                  className={styles.staircaseList}
+                  style={
+                    {
+                      '--total-rows': totalRows,
+                    } as React.CSSProperties
+                  }
+                >
+                  {category.skills.map((skill, rowIdx) => (
+                    <div
+                      key={skill}
+                      className={styles.skillRow}
+                      style={
+                        {
+                          '--row-index': rowIdx,
+                        } as React.CSSProperties
+                      }
+                    >
+                      {/* Horizontal slice of the giant category icon */}
+                      <div className={styles.iconSliceViewport} aria-hidden="true">
+                        <div className={styles.iconSliceCanvas}>
+                          {renderIcon(category.icon, 235, 1.5)}
+                        </div>
+                      </div>
+
+                      <span className={styles.skillLabel}>{skill}</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
             );
           })}
         </div>

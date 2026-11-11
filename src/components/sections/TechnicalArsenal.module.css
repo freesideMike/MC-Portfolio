@@ -1,6 +1,12 @@
 .section {
-  padding-top: 3rem;
-  padding-bottom: 5rem;
+  padding-top: 3.5rem;
+  padding-bottom: 5.5rem;
+}
+
+.arsenalContainer {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 1.75rem;
 }
 
 .header {
@@ -18,46 +24,382 @@
 .subtitle {
   color: var(--text-muted);
   font-size: 1rem;
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
-.cardInner {
-  padding: 2.5rem;
+/* ==========================================================================
+   4-Column Expanding Flex Layout
+   Default: 4 equal columns (~20-25% each, flexing across full width)
+   Hover on 1 column: hovered card expands to ~33-35%, others compress smoothly
+   ========================================================================== */
+.cardsRow {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  align-items: stretch;
+  gap: 1.15rem;
+  width: 100%;
 }
 
-.cardHeader {
+.card {
+  flex: 1 1 20%;
+  min-width: 0;
+  border-radius: var(--radius-xl);
+  padding: 1.85rem 1.35rem 2rem;
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  transition:
+    flex 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+/* Alternating subtle off-white and warm light-gray cards matching theme */
+.cardClean {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #e6e4e0;
+  box-shadow: var(--shadow-card);
+}
+
+.cardTinted {
+  background-color: rgba(244, 242, 239, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #e0ddd7;
+  box-shadow: var(--shadow-card);
+}
+
+/* When any card in the row is hovered, shrink non-hovered to ~21% and grow hovered to ~34% */
+.cardsRow:has(.card:hover) .card {
+  flex: 0.85 1 20%;
+}
+
+.cardsRow .card:hover {
+  flex: 1.75 1 34%;
+  background-color: #ffffff;
+  border-color: rgba(223, 91, 55, 0.35);
+  box-shadow:
+    0 20px 40px -12px rgba(223, 91, 55, 0.14),
+    0 8px 20px -6px rgba(17, 24, 39, 0.06);
+  z-index: 2;
+}
+
+/* Card Header & Concise Description */
+.cardTop {
+  text-align: center;
   margin-bottom: 1.25rem;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .cardTitle {
-  font-size: 1.35rem;
+  font-size: 1.18rem;
   font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 0.45rem;
 }
 
 .cardDesc {
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  max-width: 28ch;
 }
 
-.cardDescDark {
-  color: var(--text-light);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  margin-bottom: 2rem;
-}
-
-.tagGroup {
+/* ==========================================================================
+   Staircase Hover Effect List + Sliced ("Broken") Background Watermark Icon
+   ========================================================================== */
+.staircaseList {
+  --row-height: 38px;
+  --row-gap: 6px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--row-gap);
+  position: relative;
+  width: 100%;
+  flex: 1;
+  padding: 0.25rem 0;
+}
+
+.skillRow {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  width: 84%;
+  height: var(--row-height);
+  padding: 0 0.85rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+
+  /* Base palette: top-lit 3D warm off-white / light stone gray */
+  background: linear-gradient(180deg, #fcfbfa 0%, #f3f1ed 58%, #e9e6e0 100%);
+  border: 1px solid #dad5cd;
+  color: #374151;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+  box-shadow:
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.9),
+    inset 0 -1.5px 2px rgba(17, 24, 39, 0.035),
+    0 2px 0 #d5d0c7,
+    0 3px 6px -1px rgba(17, 24, 39, 0.05);
+
+  transition:
+    width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.28s ease,
+    border-color 0.28s ease,
+    color 0.22s ease,
+    box-shadow 0.28s ease;
+}
+
+.cardTinted .skillRow {
+  background: linear-gradient(180deg, #ffffff 0%, #f9f8f5 58%, #f0ede7 100%);
+  border-color: #dcd8d0;
+  box-shadow:
+    inset 0 1px 0.5px #ffffff,
+    inset 0 -1.5px 2px rgba(17, 24, 39, 0.03),
+    0 2px 0 #d6d1c8,
+    0 3px 6px -1px rgba(17, 24, 39, 0.045);
+}
+
+/* Soft top specular reflection (gentler than buttons so the background icon shines through) */
+.skillRow::before {
+  content: '';
+  position: absolute;
+  inset: 1px 1px 52% 1px;
+  border-radius: 7px 7px 4px 4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle diagonal light glint ("ljusblänk") on hover */
+.skillRow::after {
+  content: '';
+  position: absolute;
+  top: -35%;
+  left: -115%;
+  width: 55%;
+  height: 170%;
+  background: linear-gradient(
+    115deg,
+    transparent 18%,
+    rgba(255, 255, 255, 0.1) 38%,
+    rgba(255, 255, 255, 0.44) 50%,
+    rgba(255, 255, 255, 0.1) 62%,
+    transparent 82%
+  );
+  transform: skewX(-22deg);
+  transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skillRow:hover::after {
+  left: 140%;
+}
+
+/* --------------------------------------------------------------------------
+   Giant Background Icon Slice Inside Each Row
+   At rest, all slices align vertically across the list to form ONE big icon.
+   When a row (and its neighbors) scales/widens on hover, its slice grows too,
+   causing the icon to visibly fracture / "break apart" horizontally!
+   -------------------------------------------------------------------------- */
+.iconSliceViewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.iconSliceCanvas {
+  position: absolute;
+  left: calc(50% - 130px);
+  /* Offset vertically by this row's position in the stack so all rows share 1 unified coordinate space */
+  top: calc(-1 * var(--row-index) * (var(--row-height) + var(--row-gap)));
+  width: 260px;
+  height: calc(
+    var(--total-rows) * var(--row-height) + (var(--total-rows) - 1) * var(--row-gap)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(223, 91, 55, 0.14);
+  transform: scale(1);
+  /* Anchor scaling around the exact horizontal & vertical center of THIS row's slice */
+  transform-origin: 50%
+    calc(var(--row-index) * (var(--row-height) + var(--row-gap)) + (var(--row-height) / 2));
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.28s ease;
+}
+
+/* Centered Row Text */
+.skillLabel {
+  position: relative;
+  z-index: 2;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition:
+    transform 0.28s ease,
+    font-size 0.28s ease;
+}
+
+/* ==========================================================================
+   Staircase States using CSS :has()
+   1) Hovered Row (Peak of the staircase - brightest orange, widest, tactile 3D)
+   2) Immediate Neighbors ±1 (Medium terracotta/peach tone, medium-wide, soft 3D)
+   3) Second Neighbors ±2 (Soft warm apricot/gray tint, slightly wider, subtle 3D)
+   ========================================================================== */
+
+/* --- Peak: Hovered Row (0) --- */
+.skillRow:hover {
+  width: 104%;
+  transform: translateY(-1px) scaleY(1.07);
+  background: linear-gradient(180deg, #f0734f 0%, #df5b37 54%, #c64725 100%);
+  border-color: #b73f1e;
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(120, 30, 10, 0.28);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.38),
+    inset 0 -1.5px 2px rgba(128, 34, 10, 0.32),
+    0 2.5px 0 #9e3316,
+    0 10px 20px -4px rgba(223, 91, 55, 0.42),
+    0 3px 6px rgba(17, 24, 39, 0.08);
+  z-index: 5;
+}
+
+.skillRow:hover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+}
+
+.skillRow:hover .skillLabel {
+  font-size: 0.86rem;
+}
+
+/* Break & grow the icon slice strongly on the hovered row */
+.skillRow:hover .iconSliceCanvas {
+  transform: scale(1.42, 1.26);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- Step ±1: Row Immediately Above & Below Hovered Row --- */
+.skillRow:has(+ .skillRow:hover),
+.skillRow:hover + .skillRow {
+  width: 95%;
+  transform: scaleY(1.03);
+  background: linear-gradient(180deg, #f8c6b7 0%, #f0a891 55%, #e48d72 100%);
+  border-color: rgba(205, 76, 40, 0.48);
+  color: #231410;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.55),
+    inset 0 -1.5px 2px rgba(145, 42, 14, 0.14),
+    0 2px 0 #c97257,
+    0 6px 14px -3px rgba(223, 91, 55, 0.22);
+  z-index: 4;
+}
+
+/* Medium fracture/scale of the icon slice on ±1 rows */
+.skillRow:has(+ .skillRow:hover) .iconSliceCanvas,
+.skillRow:hover + .skillRow .iconSliceCanvas {
+  transform: scale(1.22, 1.14);
+  color: rgba(168, 52, 22, 0.25);
+}
+
+/* --- Step ±2: Two Rows Above & Below Hovered Row --- */
+.skillRow:has(+ .skillRow + .skillRow:hover),
+.skillRow:hover + .skillRow + .skillRow {
+  width: 89%;
+  background: linear-gradient(180deg, #fdefeb 0%, #fae1d9 56%, #f3cec2 100%);
+  border-color: rgba(223, 91, 55, 0.3);
+  color: #292524;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
+  box-shadow:
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.8),
+    inset 0 -1.5px 2px rgba(180, 60, 30, 0.06),
+    0 2px 0 #dfb2a3,
+    0 4px 9px -2px rgba(223, 91, 55, 0.12);
+  z-index: 3;
+}
+
+/* Subtle fracture/scale of the icon slice on ±2 rows */
+.skillRow:has(+ .skillRow + .skillRow:hover) .iconSliceCanvas,
+.skillRow:hover + .skillRow + .skillRow .iconSliceCanvas {
+  transform: scale(1.1, 1.05);
+  color: rgba(223, 91, 55, 0.2);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1120px) {
+  .cardsRow {
+    flex-wrap: wrap;
+  }
+
+  .card,
+  .cardsRow:has(.card:hover) .card,
+  .cardsRow .card:hover {
+    flex: 1 1 calc(50% - 1.15rem);
+  }
+}
+
+@media (max-width: 680px) {
+  .arsenalContainer {
+    padding: 0 1.15rem;
+  }
+
+  .card,
+  .cardsRow:has(.card:hover) .card,
+  .cardsRow .card:hover {
+    flex: 1 1 100%;
+  }
+
+  .skillRow {
+    width: 90%;
+  }
+
+  .skillRow:hover {
+    width: 100%;
+  }
+
+  .skillRow:has(+ .skillRow:hover),
+  .skillRow:hover + .skillRow {
+    width: 96%;
+  }
+
+  .skillRow:has(+ .skillRow + .skillRow:hover),
+  .skillRow:hover + .skillRow + .skillRow {
+    width: 93%;
+  }
 }

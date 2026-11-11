@@ -42,8 +42,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact }) => {
                 variant="secondary"
                 size="md"
                 asAnchor
-                href="#experience"
+                href="#projects"
                 icon={<ArrowUpRight size={17} />}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const targetEl = document.getElementById('projects');
+                  if (targetEl) {
+                    const headerEl = document.querySelector('header');
+                    const headerHeight = headerEl ? headerEl.offsetHeight : 68;
+                    const targetTop =
+                      targetEl.getBoundingClientRect().top +
+                      window.scrollY -
+                      headerHeight +
+                      8;
+                    window.history.pushState(null, '', '#projects');
+                    window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+                  }
+                }}
               >
                 {t.viewWork}
               </Button>

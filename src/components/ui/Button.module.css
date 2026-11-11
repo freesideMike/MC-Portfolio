@@ -1,52 +1,184 @@
 .btn {
+  position: relative;
+  overflow: hidden;
+   isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 600;
   border-radius: var(--radius-full);
   cursor: pointer;
   border: 1px solid transparent;
-  transition: all var(--transition-normal);
   text-decoration: none;
   line-height: 1.4;
+  user-select: none;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
-/* Primary Coral Button */
+/* Top glossy specular rim (3D light reflection along upper curve) */
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 1px 1px 45% 1px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.36) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Diagonal sweeping light glint ("ljusblänk") */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -120%;
+  width: 65%;
+  height: 160%;
+  background: linear-gradient(
+    115deg,
+    transparent 15%,
+    rgba(255, 255, 255, 0.15) 38%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.15) 62%,
+    transparent 85%
+  );
+  transform: skewX(-22deg);
+  transition: left 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.btn:hover::after {
+  left: 145%;
+}
+
+.btn > * {
+  position: relative;
+  z-index: 3;
+}
+
+.btn svg {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn:hover svg {
+  transform: translate(1.5px, -1.5px);
+}
+
+/* ==========================================================================
+   Primary Terracotta 3D Button
+   ========================================================================== */
 .primary {
-  background-color: var(--accent-primary);
+  background: linear-gradient(180deg, #f27653 0%, #df5b37 52%, #c44422 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(223, 91, 55, 0.2);
+  border-color: #b53d1c;
+  text-shadow: 0 1px 1px rgba(120, 30, 10, 0.32);
+  box-shadow:
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+    inset 0 -2px 3px rgba(128, 34, 10, 0.45),
+    0 3px 0 #9e3316,
+    0 8px 18px -3px rgba(223, 91, 55, 0.38),
+    0 2px 5px rgba(17, 24, 39, 0.1);
 }
 
 .primary:hover {
-  background-color: var(--accent-primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(223, 91, 55, 0.3);
+  background: linear-gradient(180deg, #f68260 0%, #e4613d 52%, #cc4a27 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 3px rgba(128, 34, 10, 0.4),
+    0 4px 0 #9e3316,
+    0 14px 26px -4px rgba(223, 91, 55, 0.48),
+    0 4px 8px rgba(17, 24, 39, 0.12);
 }
 
-/* Secondary White Card Button */
+.primary:active {
+  transform: translateY(1.5px);
+  box-shadow:
+    inset 0 1px 2px rgba(128, 34, 10, 0.35),
+    0 1px 0 #9e3316,
+    0 4px 10px -2px rgba(223, 91, 55, 0.3);
+}
+
+/* ==========================================================================
+   Secondary Pearl / Alabaster 3D Button ("Se projekt")
+   ========================================================================== */
 .secondary {
-  background-color: #ffffff;
+  background: linear-gradient(180deg, #ffffff 0%, #faf9f7 58%, #efece6 100%);
   color: var(--text-primary);
-  border-color: var(--surface-card-border);
-  box-shadow: var(--shadow-sm);
+  border-color: #d8d4cc;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow:
+    inset 0 1.5px 1px #ffffff,
+    inset 0 -2px 3px rgba(17, 24, 39, 0.05),
+    0 3px 0 #cfc9bf,
+    0 8px 18px -4px rgba(17, 24, 39, 0.09),
+    0 2px 5px rgba(17, 24, 39, 0.05);
+}
+
+.secondary::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+}
+
+.secondary::after {
+  background: linear-gradient(
+    115deg,
+    transparent 15%,
+    rgba(255, 255, 255, 0.4) 35%,
+    rgba(255, 255, 255, 0.95) 48%,
+    rgba(223, 91, 55, 0.16) 54%,
+    transparent 85%
+  );
 }
 
 .secondary:hover {
-  background-color: #f9fafb;
-  border-color: #d1d5db;
-  transform: translateY(-1px);
+  background: linear-gradient(180deg, #ffffff 0%, #fcfbfa 58%, #f4f1ec 100%);
+  border-color: #c7c1b7;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1.5px 1px #ffffff,
+    inset 0 -2px 3px rgba(223, 91, 55, 0.06),
+    0 4px 0 #c5beb3,
+    0 14px 24px -4px rgba(17, 24, 39, 0.12),
+    0 4px 8px rgba(17, 24, 39, 0.06);
 }
 
-/* Ghost / Icon only button */
+.secondary:active {
+  transform: translateY(1.5px);
+  box-shadow:
+    inset 0 1px 2px rgba(17, 24, 39, 0.08),
+    0 1px 0 #c5beb3,
+    0 3px 8px rgba(17, 24, 39, 0.07);
+}
+
+/* ==========================================================================
+   Ghost / Icon only button
+   ========================================================================== */
 .ghost {
   background: transparent;
   color: var(--text-secondary);
   border-color: transparent;
   padding: 0.4rem;
+}
+
+.ghost::before,
+.ghost::after {
+  display: none;
 }
 
 .ghost:hover {
@@ -56,16 +188,17 @@
 
 /* Sizes */
 .sm {
-  padding: 0.45rem 1.1rem;
+  padding: 0.45rem 1.15rem;
   font-size: 0.85rem;
 }
 
 .md {
-  padding: 0.7rem 1.4rem;
+  padding: 0.68rem 1.45rem;
+  font-size: 0.92rem;
 }
 
 .lg {
-  padding: 0.8rem 1.8rem;
+  padding: 0.82rem 1.85rem;
   font-size: 1rem;
 }
 
